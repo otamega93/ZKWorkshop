@@ -1,0 +1,49 @@
+<zk>
+    <window title = "Formulario de registro" border = "normal">
+    	<grid>
+            <columns>
+                <column label="Tipo" width="140px" />
+                <column label="Contenido" />
+            </columns>
+            <rows>
+                <row>
+                	<label value="Nombre:" width="150px" />
+                	<textbox constraint = "no empty" width = "200px"></textbox>
+                </row>
+                <row>
+                	<label value="Apellido:" width="150px" />
+                	<textbox constraint = "no empty" width = "200px"></textbox>
+                </row>
+                <row>
+                	<label value="Cédula:" width="150px" />
+                	<intbox constraint = "no empty" width = "200px"></intbox>
+                </row>
+                <row>
+                	<label value="Sexo:" width="150px" />
+                	<listbox mold="select" tabindex="8" width = "200px">
+                        <listitem label="Masculino" value="Masculino" />
+                        <listitem label="Femenino" value="Femenino" />
+                    </listbox>
+                </row>
+                <row>
+                	<label value="Teléfono:" width="150px" />
+                	<intbox constraint = "no empty" width = "200px"></intbox>
+                </row>
+                <row>
+                	<label value="Dirección:" width="150px" />
+                	<textbox constraint = "no empty" width = "200px"></textbox>
+                </row>
+                <row>
+                	<label value="Fecha de Nacimiento:" width="150px" />
+                	<datebox width = "200px" format="medium" constraint = "no empty" />
+                </row>
+                <row>
+                	<label />
+                	<cell align = "right">
+                		<button label="¡Enviar" width="100px" height="30px" />
+                	</cell>
+                </row>
+            </rows>
+		</grid>
+	</window>
+</zk>
