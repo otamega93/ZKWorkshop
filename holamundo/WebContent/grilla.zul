@@ -1,0 +1,18 @@
+<window title="Persona List" border="normal" apply = "org.zkoss.bind.BindComposer" 
+	viewModel = "@id('vm') @init('com.curso.mvvm.PersonaListViewModel')" onCreate = "@command('search')">
+    <grid model="@load(vm.personaList)"  mold="paging" vflex="1" >
+        <columns>
+            <column hflex="2">ID</column>
+            <column hflex="2">Nombre</column>
+        </columns>
+        <template name="model">
+            <row>
+                <label value="@load(each.id)" />
+                <label value="@load(each.name)" />
+            </row>
+        </template>
+    </grid>
+    <hbox align="center">
+    	<button id="searchButton" label="Search" onClick = "@command('search')" />
+	</hbox>
+</window>
