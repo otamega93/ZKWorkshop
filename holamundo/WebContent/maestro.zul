@@ -1,49 +1,33 @@
-<zk>
-    <window title = "Formulario de registro" border = "normal">
-    	<grid>
-            <columns>
-                <column label="Tipo" width="140px" />
-                <column label="Contenido" />
-            </columns>
-            <rows>
-                <row>
-                	<label value="Nombre:" width="150px" />
-                	<textbox constraint = "no empty" width = "200px"></textbox>
-                </row>
-                <row>
-                	<label value="Apellido:" width="150px" />
-                	<textbox constraint = "no empty" width = "200px"></textbox>
-                </row>
-                <row>
-                	<label value="Cédula:" width="150px" />
-                	<intbox constraint = "no empty" width = "200px"></intbox>
-                </row>
-                <row>
-                	<label value="Sexo:" width="150px" />
-                	<listbox mold="select" tabindex="8" width = "200px">
-                        <listitem label="Masculino" value="Masculino" />
-                        <listitem label="Femenino" value="Femenino" />
-                    </listbox>
-                </row>
-                <row>
-                	<label value="Teléfono:" width="150px" />
-                	<intbox constraint = "no empty" width = "200px"></intbox>
-                </row>
-                <row>
-                	<label value="Dirección:" width="150px" />
-                	<textbox constraint = "no empty" width = "200px"></textbox>
-                </row>
-                <row>
-                	<label value="Fecha de Nacimiento:" width="150px" />
-                	<datebox width = "200px" format="medium" constraint = "no empty" />
-                </row>
-                <row>
-                	<label />
-                	<cell align = "right">
-                		<button label="¡Enviar" width="100px" height="30px" />
-                	</cell>
-                </row>
-            </rows>
-		</grid>
-	</window>
-</zk>
+<window title="Persona List" border="normal" apply = "org.zkoss.bind.BindComposer" 
+	viewModel = "@id('vm') @init('com.curso.mvvm.PersonaListViewModel')">
+
+<hbox align="center">
+    <button id="searchButton" label="Search" onClick = "@command('search')" />
+</hbox>
+
+<listbox id="personListbox" height="160px" emptyMessage="No Person found in the result" 
+	model = "@bind(vm.personaList)" selectedItem = "@bind(vm.selectedPersona)" >
+    <listhead>
+        <listheader label="Id" />
+        <listheader label="Name" />
+    </listhead>
+    <template name = "model">
+    	<listitem>
+        	<listcell label = "@bind(each.id)"></listcell>
+        	<listcell label = "@bind(each.name)"></listcell>
+    	</listitem>
+    </template>	
+</listbox>
+<textbox id = "addPerson" value="@bind(vm.name)"></textbox>
+<button id="AddButton" label="Add" onClick = "@command('addPersona')" />
+<hbox style="margin-top:20px">
+    <vbox>
+        <label id="idLabel" value = "@bind(vm.selectedPersona.id)"/>
+        <label id="nameLabel" value = "@bind(vm.selectedPersona.name)"/>
+    </vbox>
+</hbox>
+
+<hbox align="left">
+    <button id="editButton" label="Edit" onClick = "@command('edit')" />
+</hbox>
+</window>
